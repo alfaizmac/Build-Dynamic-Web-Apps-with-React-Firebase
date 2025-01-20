@@ -1,11 +1,8 @@
-import React from "react";
-import "./modal.css";
-
-export default function Modal({ children, handleCLose }) {
+export default function Modal(props, handleCLose) {
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        {children}
+        {props.children}
         <button onClick={handleCLose}>close</button>
       </div>
     </div>

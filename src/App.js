@@ -5,6 +5,7 @@ import Modal from "./components/Modal";
 
 function App() {
   // const [name, setName] = useState("Mario");
+  const [showModal, setShowModal] = useState(false);
   const [showEvents, setshowEvents] = useState(true);
   const [events, setEvents] = useState([
     { title: "mario", id: 1 },
@@ -13,7 +14,7 @@ function App() {
   ]);
 
   console.log(showEvents);
-
+  console.log(showModal);
   const handleClick = (id) => {
     // //this update the new name.
     // setName("Luigi");
@@ -32,6 +33,10 @@ function App() {
       });
     });
     console.log(id);
+  };
+
+  const handleCLose = () => {
+    setShowModal(false);
   };
 
   const subtitle = "All the latest events in Marioland";
@@ -63,7 +68,18 @@ function App() {
           </div>
         ))}
 
-      <Modal />
+      {showModal && (
+        <Modal handleCLose={handleCLose}>
+          <h2>Term and Condition</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
+            porro nulla tempore culpa unde exercitationem in, similique
+            provident eum tempora ducimus enim minus iusto odit veniam aut
+            maxime autem vitae!
+          </p>
+        </Modal>
+      )}
+      <button onClick={() => setShowModal(true)}>Show Modal</button>
     </div>
   );
 }
